@@ -13,7 +13,6 @@ namespace Guessing_Game
             int option, number, guess, tries, tip, limSup, limInf;
             char right;
             List<Jogada> history = new List<Jogada>();
-
             do
             {
                 Console.Clear();
