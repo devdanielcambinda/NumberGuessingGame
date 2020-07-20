@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace Guessing_Game
 {
@@ -7,11 +8,12 @@ namespace Guessing_Game
         static void Main(string[] args)
         {
 
-            int option, number , guess, tries, tip;
+            int option, number, guess, tries, tip, limSup, limInf;
             char right;
 
             do
             {
+                Console.Clear();
                 Console.WriteLine("******************************************");
                 Console.WriteLine("*           Number Guessing Game         *");
                 Console.WriteLine("*  1- Player tries to guess the number   *");
@@ -41,11 +43,53 @@ namespace Guessing_Game
                             }
                             else
                             {
-                                Console.WriteLine($"Correct ! You guessed the number {number} in {tries} try/tries .\n ");
+                                Console.WriteLine($"Correct ! You guessed the number {number} in {tries} try/tries . ");
+                                Console.WriteLine("Press any key to continue ...");
+                                Console.ReadKey();
                             }
                         } while (number != guess);
                         break;
                     case 2:
+                        Console.WriteLine("Think in a number between 0 and 100");
+                        tries = 0;
+                        limSup = 101;
+                        limInf = 0;
+                        do
+                        {
+                            Console.Clear();
+                            guess = (limInf + limSup) / 2;
+                            tries++;
+                            Console.Write($"Is the number you are thinking {guess} ?  (Y/N) ");
+                            string input = Console.ReadLine();
+                            right = input[0];
+                            Char.ToLower(right);
+                            
+                            if ( right == 'n')
+                            {
+                                Console.WriteLine($"Is it higher or lower than {guess} ? (1 if higher 0 if lower)");
+                                tip = Int32.Parse(Console.ReadLine());
+                                switch (tip)
+                                {
+                                    case 1:
+                                        limInf = guess;
+                                        break;
+                                    case 0:
+                                        limSup = guess;
+                                        break;
+                                    default:
+                                        Console.WriteLine("Invalid Input");
+                                        Console.WriteLine("Press any key to continue ...");
+                                        Console.ReadKey();
+                                        break;
+
+                                }
+                            }else if ( (right = 'y') != '\0' )
+                            {
+                                Console.WriteLine($"I found the number {guess} within {tries} try/tries");
+                                Console.WriteLine("Press any key to continue ...");
+                                Console.ReadKey();
+                            }
+                        } while (right == 'n' );
                         break;
                     case 3:
                         break;
@@ -55,6 +99,7 @@ namespace Guessing_Game
                         Console.WriteLine("Please insert a valid input!");
                         Console.WriteLine("Press any key...");
                         Console.ReadKey();
+                        Console.Clear();
                         break;
                         
                 }
