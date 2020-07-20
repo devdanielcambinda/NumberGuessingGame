@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System.Linq;
 
 namespace Guessing_Game
 {
@@ -11,6 +12,7 @@ namespace Guessing_Game
 
             int option, number, guess, tries, tip, limSup, limInf;
             char right;
+            List<Jogada> history = new List<Jogada>();
 
             do
             {
@@ -22,11 +24,13 @@ namespace Guessing_Game
                 Console.WriteLine("*  3- History                            *");
                 Console.WriteLine("*  0- Quit                               *");
                 Console.WriteLine("******************************************");
+                Console.Write("Option: ");
                 option = Int32.Parse(Console.ReadLine());
 
                 switch (option)
                 {
                     case 1:
+                        Console.Clear();
                         Random randomNumber = new Random();
                         number = randomNumber.Next(0, 101);
                         tries = 0;
@@ -48,17 +52,18 @@ namespace Guessing_Game
                                 Console.WriteLine($"Correct ! You guessed the number {number} in {tries} try/tries . ");
                                 Console.WriteLine("Press any key to continue ...");
                                 Console.ReadKey();
+                                history.Add(new Jogada("Player",number,tries));
                             }
                         } while (number != guess);
                         break;
                     case 2:
+                        Console.Clear();
                         Console.WriteLine("Think in a number between 0 and 100");
                         tries = 0;
                         limSup = 101;
                         limInf = 0;
                         do
                         {
-                            Console.Clear();
                             guess = (limInf + limSup) / 2;
                             tries++;
                             Console.Write($"Is the number you are thinking {guess} ?  (Y/N) ");
@@ -90,11 +95,30 @@ namespace Guessing_Game
                                 Console.WriteLine($"I found the number {guess} within {tries} try/tries");
                                 Console.WriteLine("Press any key to continue ...");
                                 Console.ReadKey();
+                                history.Add(new Jogada("Computer",guess,tries));
                             }
                         } while (right == 'n' );
                         break;
                     case 3:
+                        Console.Clear();
                         
+                        if (history.Count == 0)
+                        {
+                            Console.WriteLine("No matches played yet ! ");
+                        }
+                        else
+                        {
+                            for (int i = 0; i < history.Count; i++)
+                            {
+                                Console.WriteLine($"Play #{i + 1}");
+                                Console.WriteLine("Guesser: " + history[i].Guesser);
+                                Console.WriteLine("Number: " + history[i].Number);
+                                Console.WriteLine("Try/tries: " + history[i].Tries + "\n");
+                            }
+                        }
+ 
+                        Console.WriteLine("Press any key to return to menu ...");
+                        Console.ReadKey();
                         break;
                     case 0:
                         Console.WriteLine("See you later! Have a good one! ");
