@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 namespace Guessing_Game
@@ -93,6 +94,7 @@ namespace Guessing_Game
                         } while (right == 'n' );
                         break;
                     case 3:
+                        
                         break;
                     case 0:
                         Console.WriteLine("See you later! Have a good one! ");
