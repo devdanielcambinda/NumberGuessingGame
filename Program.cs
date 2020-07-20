@@ -32,6 +32,7 @@ namespace Guessing_Game
                         do
                         {
                             Console.WriteLine("Try to guess the number (0-100)");
+                            Console.Write("Number: ");
                             guess = Convert.ToInt32(Console.ReadLine());
                             tries++;
                             if (guess > number)
@@ -94,6 +95,9 @@ namespace Guessing_Game
                     case 3:
                         break;
                     case 0:
+                        Console.WriteLine("See you later! Have a good one! ");
+                        Console.WriteLine("Press any key to leave ...");
+                        Console.ReadKey();
                         break;
                     default:
                         Console.WriteLine("Please insert a valid input!");
