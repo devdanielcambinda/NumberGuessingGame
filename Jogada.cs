@@ -11,12 +11,14 @@ namespace Guessing_Game
         public int Tries { get; private set;}
         public int Number { get; private set;}
         public string Guesser { get; private set;}
+        public string Difficulty { get; set; }
 
-        public Jogada(string guesser, int number , int tries)
+        public Jogada(string guesser, int number , int tries, string difficulty="0")
         {
             this.Guesser = guesser;
             this.Number = number;
             this.Tries = tries;
+            this.Difficulty = difficulty;
         }
     }
 }

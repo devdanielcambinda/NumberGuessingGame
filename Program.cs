@@ -13,6 +13,7 @@ namespace Guessing_Game
             int option, number, guess, tries, tip, limSup, limInf;
             char right;
             List<Jogada> history = new List<Jogada>();
+            string difficulty = "Medium";
             do
             {
                 Console.Clear();
@@ -21,6 +22,7 @@ namespace Guessing_Game
                 Console.WriteLine("*  1- Player tries to guess the number   *");
                 Console.WriteLine("*  2- Computer tries to guess the number *");
                 Console.WriteLine("*  3- History                            *");
+                Console.WriteLine("*  4- Settings                           *");
                 Console.WriteLine("*  0- Quit                               *");
                 Console.WriteLine("******************************************");
                 Console.Write("Option: ");
@@ -118,6 +120,47 @@ namespace Guessing_Game
  
                         Console.WriteLine("Press any key to return to menu ...");
                         Console.ReadKey();
+                        break;
+                    case 4:
+                        Console.Clear();
+                        Console.WriteLine($" Your Current difficulty is {difficulty}");
+                        Console.WriteLine("Difficulty levels: ");
+                        Console.WriteLine("1-Low");
+                        Console.WriteLine("2-Medium");
+                        Console.WriteLine("3-Hard");
+                        Console.WriteLine("Do you want to switch difficulty ? Y/N ");
+                        string difficulty_question = Console.ReadLine();
+                        if (difficulty_question.Equals("Y"))
+                        {
+                            Console.WriteLine("Wich difficulty do you want ?");
+                            Console.Write("Option: ");
+                            switch (Int32.Parse(Console.ReadLine()))
+                            {
+                                case 1:
+                                    difficulty = "Low";
+                                    break;
+                                case 2:
+                                    difficulty = "Medium";
+                                    break;
+                                case 3:
+                                    difficulty = "Hard";
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                        else if (difficulty_question.Equals("N"))
+                        {
+                            Console.WriteLine("You choose not to switch the game difficulty ");
+                            Console.WriteLine("Press any key to return to the main menu ...");
+                            Console.ReadKey();
+                        }else
+                        {
+                            Console.WriteLine("Invalid Input ...");
+                            Console.WriteLine("Press any key to return to the main menu ...");
+                            Console.ReadKey();
+                        }
+                       
                         break;
                     case 0:
                         Console.WriteLine("See you later! Have a good one! ");
