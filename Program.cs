@@ -31,74 +31,230 @@ namespace Guessing_Game
                 switch (option)
                 {
                     case 1:
-                        Console.Clear();
-                        Random randomNumber = new Random();
-                        number = randomNumber.Next(0, 101);
-                        tries = 0;
-                        do
+                        if (difficulty.Equals("Low"))
                         {
-                            Console.WriteLine("Try to guess the number (0-100)");
-                            Console.Write("Number: ");
-                            guess = Convert.ToInt32(Console.ReadLine());
-                            tries++;
-                            if (guess > number)
+                            Console.Clear();
+                            Random randomNumber = new Random();
+                            number = randomNumber.Next(0, 11);
+                            tries = 0;
+                            do
                             {
-                                Console.WriteLine($"The number is smaller than {guess}.\n");
-                            }else if(guess < number )
+                                Console.WriteLine("Try to guess the number (0-10)");
+                                Console.Write("Number: ");
+                                guess = Convert.ToInt32(Console.ReadLine());
+                                tries++;
+                                if (guess > number)
+                                {
+                                    Console.WriteLine($"The number is smaller than {guess}.\n");
+                                }
+                                else if (guess < number)
+                                {
+                                    Console.WriteLine($"The number is bigger than {guess}.\n");
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"Correct ! You guessed the number {number} in {tries} try/tries . ");
+                                    Console.WriteLine("Press any key to continue ...");
+                                    Console.ReadKey();
+                                    history.Add(new Jogada("Player", number, tries,difficulty));
+                                }
+                            } while (number != guess);
+                        }
+                        else if (difficulty.Equals("Medium"))
+                        {
+                            Console.Clear();
+                            Random randomNumber = new Random();
+                            number = randomNumber.Next(0, 101);
+                            tries = 0;
+                            do
                             {
-                                Console.WriteLine($"The number is bigger than {guess}.\n");
-                            }
-                            else
+                                Console.WriteLine("Try to guess the number (0-100)");
+                                Console.Write("Number: ");
+                                guess = Convert.ToInt32(Console.ReadLine());
+                                tries++;
+                                if (guess > number)
+                                {
+                                    Console.WriteLine($"The number is smaller than {guess}.\n");
+                                }
+                                else if (guess < number)
+                                {
+                                    Console.WriteLine($"The number is bigger than {guess}.\n");
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"Correct ! You guessed the number {number} in {tries} try/tries . ");
+                                    Console.WriteLine("Press any key to continue ...");
+                                    Console.ReadKey();
+                                    history.Add(new Jogada("Player", number, tries,difficulty));
+                                }
+                            } while (number != guess);
+                        }else if (difficulty.Equals("Hard"))
+                        {
+                            Console.Clear();
+                            Random randomNumber = new Random();
+                            number = randomNumber.Next(0, 1001);
+                            tries = 0;
+                            do
                             {
-                                Console.WriteLine($"Correct ! You guessed the number {number} in {tries} try/tries . ");
-                                Console.WriteLine("Press any key to continue ...");
-                                Console.ReadKey();
-                                history.Add(new Jogada("Player",number,tries));
-                            }
-                        } while (number != guess);
+                                Console.WriteLine("Try to guess the number (0-1000)");
+                                Console.Write("Number: ");
+                                guess = Convert.ToInt32(Console.ReadLine());
+                                tries++;
+                                if (guess > number)
+                                {
+                                    Console.WriteLine($"The number is smaller than {guess}.\n");
+                                }
+                                else if (guess < number)
+                                {
+                                    Console.WriteLine($"The number is bigger than {guess}.\n");
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"Correct ! You guessed the number {number} in {tries} try/tries . ");
+                                    Console.WriteLine("Press any key to continue ...");
+                                    Console.ReadKey();
+                                    history.Add(new Jogada("Player", number, tries,difficulty));
+                                }
+                            } while (number != guess);
+                        }
                         break;
                     case 2:
-                        Console.Clear();
-                        Console.WriteLine("Think in a number between 0 and 100");
-                        tries = 0;
-                        limSup = 101;
-                        limInf = 0;
-                        do
+                        
+                        if (difficulty.Equals("Low"))
                         {
-                            guess = (limInf + limSup) / 2;
-                            tries++;
-                            Console.Write($"Is the number you are thinking {guess} ?  (Y/N) ");
-                            string input = Console.ReadLine();
-                            right = input[0];
-                            Char.ToLower(right);
-                            
-                            if ( right == 'n')
+                            Console.Clear();
+                            Console.WriteLine("Think in a number between 0 and 10");
+                            tries = 0;
+                            limSup = 11;
+                            limInf = 0;
+                            do
                             {
-                                Console.WriteLine($"Is it higher or lower than {guess} ? (1 if higher 0 if lower)");
-                                tip = Int32.Parse(Console.ReadLine());
-                                switch (tip)
-                                {
-                                    case 1:
-                                        limInf = guess;
-                                        break;
-                                    case 0:
-                                        limSup = guess;
-                                        break;
-                                    default:
-                                        Console.WriteLine("Invalid Input");
-                                        Console.WriteLine("Press any key to continue ...");
-                                        Console.ReadKey();
-                                        break;
+                                guess = (limInf + limSup) / 2;
+                                tries++;
+                                Console.Write($"Is the number you are thinking {guess} ?  (Y/N) ");
+                                string input = Console.ReadLine();
+                                right = input[0];
+                                Char.ToLower(right);
 
+                                if (right == 'n')
+                                {
+                                    Console.WriteLine($"Is it higher or lower than {guess} ? (1 if higher 0 if lower)");
+                                    tip = Int32.Parse(Console.ReadLine());
+                                    switch (tip)
+                                    {
+                                        case 1:
+                                            limInf = guess;
+                                            break;
+                                        case 0:
+                                            limSup = guess;
+                                            break;
+                                        default:
+                                            Console.WriteLine("Invalid Input");
+                                            Console.WriteLine("Press any key to continue ...");
+                                            Console.ReadKey();
+                                            break;
+
+                                    }
                                 }
-                            }else if ( (right = 'y') != '\0' )
+                                else if ((right = 'y') != '\0')
+                                {
+                                    Console.WriteLine($"I found the number {guess} within {tries} try/tries");
+                                    Console.WriteLine("Press any key to continue ...");
+                                    Console.ReadKey();
+                                    history.Add(new Jogada("Computer", guess, tries,difficulty));
+                                }
+                            } while (right == 'n');
+                        }
+                        else if (difficulty.Equals("Medium"))
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Think in a number between 0 and 100");
+                            tries = 0;
+                            limSup = 101;
+                            limInf = 0;
+                            do
                             {
-                                Console.WriteLine($"I found the number {guess} within {tries} try/tries");
-                                Console.WriteLine("Press any key to continue ...");
-                                Console.ReadKey();
-                                history.Add(new Jogada("Computer",guess,tries));
-                            }
-                        } while (right == 'n' );
+                                guess = (limInf + limSup) / 2;
+                                tries++;
+                                Console.Write($"Is the number you are thinking {guess} ?  (Y/N) ");
+                                string input = Console.ReadLine();
+                                right = input[0];
+                                Char.ToLower(right);
+
+                                if (right == 'n')
+                                {
+                                    Console.WriteLine($"Is it higher or lower than {guess} ? (1 if higher 0 if lower)");
+                                    tip = Int32.Parse(Console.ReadLine());
+                                    switch (tip)
+                                    {
+                                        case 1:
+                                            limInf = guess;
+                                            break;
+                                        case 0:
+                                            limSup = guess;
+                                            break;
+                                        default:
+                                            Console.WriteLine("Invalid Input");
+                                            Console.WriteLine("Press any key to continue ...");
+                                            Console.ReadKey();
+                                            break;
+
+                                    }
+                                }
+                                else if ((right = 'y') != '\0')
+                                {
+                                    Console.WriteLine($"I found the number {guess} within {tries} try/tries");
+                                    Console.WriteLine("Press any key to continue ...");
+                                    Console.ReadKey();
+                                    history.Add(new Jogada("Computer", guess, tries,difficulty));
+                                }
+                            } while (right == 'n');
+                        }
+                        else if (difficulty.Equals("Hard"))
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Think in a number between 0 and 1000");
+                            tries = 0;
+                            limSup = 1001;
+                            limInf = 0;
+                            do
+                            {
+                                guess = (limInf + limSup) / 2;
+                                tries++;
+                                Console.Write($"Is the number you are thinking {guess} ?  (Y/N) ");
+                                string input = Console.ReadLine();
+                                right = input[0];
+                                Char.ToLower(right);
+
+                                if (right == 'n')
+                                {
+                                    Console.WriteLine($"Is it higher or lower than {guess} ? (1 if higher 0 if lower)");
+                                    tip = Int32.Parse(Console.ReadLine());
+                                    switch (tip)
+                                    {
+                                        case 1:
+                                            limInf = guess;
+                                            break;
+                                        case 0:
+                                            limSup = guess;
+                                            break;
+                                        default:
+                                            Console.WriteLine("Invalid Input");
+                                            Console.WriteLine("Press any key to continue ...");
+                                            Console.ReadKey();
+                                            break;
+
+                                    }
+                                }
+                                else if ((right = 'y') != '\0')
+                                {
+                                    Console.WriteLine($"I found the number {guess} within {tries} try/tries");
+                                    Console.WriteLine("Press any key to continue ...");
+                                    Console.ReadKey();
+                                    history.Add(new Jogada("Computer", guess, tries,difficulty));
+                                }
+                            } while (right == 'n');
+                        }
                         break;
                     case 3:
                         Console.Clear();
@@ -112,9 +268,10 @@ namespace Guessing_Game
                             for (int i = 0; i < history.Count; i++)
                             {
                                 Console.WriteLine($"Play #{i + 1}");
-                                Console.WriteLine("Guesser: " + history[i].Guesser);
-                                Console.WriteLine("Number: " + history[i].Number);
-                                Console.WriteLine("Try/tries: " + history[i].Tries + "\n");
+                                Console.WriteLine("Guesser: {0}" , history[i].Guesser);
+                                Console.WriteLine("Number: {0}" , history[i].Number);
+                                Console.WriteLine("Difficulty: {0}" , history[i].Difficulty);
+                                Console.WriteLine("Try/tries: {0}" , history[i].Tries + "\n");
                             }
                         }
  

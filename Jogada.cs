@@ -13,7 +13,7 @@ namespace Guessing_Game
         public string Guesser { get; private set;}
         public string Difficulty { get; set; }
 
-        public Jogada(string guesser, int number , int tries, string difficulty="0")
+        public Jogada(string guesser, int number , int tries, string difficulty)
         {
             this.Guesser = guesser;
             this.Number = number;
