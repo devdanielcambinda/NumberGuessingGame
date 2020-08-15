@@ -136,7 +136,7 @@ namespace Guessing_Game
                                 right = input[0];
                                 Char.ToLower(right);
 
-                                if (right == 'n')
+                                if (right == 'n' || right =='N')
                                 {
                                     Console.WriteLine($"Is it higher or lower than {guess} ? (1 if higher 0 if lower)");
                                     tip = Int32.Parse(Console.ReadLine());
@@ -156,14 +156,14 @@ namespace Guessing_Game
 
                                     }
                                 }
-                                else if ((right = 'y') != '\0')
+                                else if (right == 'y' || right =='Y' )
                                 {
                                     Console.WriteLine($"I found the number {guess} within {tries} try/tries");
                                     Console.WriteLine("Press any key to continue ...");
                                     Console.ReadKey();
                                     history.Add(new Jogada("Computer", guess, tries,difficulty));
                                 }
-                            } while (right == 'n');
+                            } while (right == 'n' || right =='N');
                         }
                         else if (difficulty.Equals("Medium"))
                         {
@@ -181,7 +181,7 @@ namespace Guessing_Game
                                 right = input[0];
                                 Char.ToLower(right);
 
-                                if (right == 'n')
+                                if (right == 'n' || right == 'N')
                                 {
                                     Console.WriteLine($"Is it higher or lower than {guess} ? (1 if higher 0 if lower)");
                                     tip = Int32.Parse(Console.ReadLine());
@@ -201,14 +201,14 @@ namespace Guessing_Game
 
                                     }
                                 }
-                                else if ((right = 'y') != '\0')
+                                else if (right == 'y' || right == 'Y' )
                                 {
                                     Console.WriteLine($"I found the number {guess} within {tries} try/tries");
                                     Console.WriteLine("Press any key to continue ...");
                                     Console.ReadKey();
                                     history.Add(new Jogada("Computer", guess, tries,difficulty));
                                 }
-                            } while (right == 'n');
+                            } while (right == 'n' || right == 'N');
                         }
                         else if (difficulty.Equals("Hard"))
                         {
@@ -226,7 +226,7 @@ namespace Guessing_Game
                                 right = input[0];
                                 Char.ToLower(right);
 
-                                if (right == 'n')
+                                if (right == 'n' || right=='N')
                                 {
                                     Console.WriteLine($"Is it higher or lower than {guess} ? (1 if higher 0 if lower)");
                                     tip = Int32.Parse(Console.ReadLine());
@@ -246,14 +246,14 @@ namespace Guessing_Game
 
                                     }
                                 }
-                                else if ((right = 'y') != '\0')
+                                else if ( right == 'y' || right == 'Y' )
                                 {
                                     Console.WriteLine($"I found the number {guess} within {tries} try/tries");
                                     Console.WriteLine("Press any key to continue ...");
                                     Console.ReadKey();
                                     history.Add(new Jogada("Computer", guess, tries,difficulty));
                                 }
-                            } while (right == 'n');
+                            } while (right == 'n' || right == 'N');
                         }
                         break;
                     case 3:
