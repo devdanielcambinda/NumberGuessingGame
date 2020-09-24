@@ -308,7 +308,7 @@ namespace Guessing_Game
                         }
                         else if (difficulty_question.Equals("N"))
                         {
-                            Console.WriteLine("You choose not to switch the game difficulty ");
+                            Console.WriteLine("You choose to not switch the game difficulty ");
                             Console.WriteLine("Press any key to return to the main menu ...");
                             Console.ReadKey();
                         }else
