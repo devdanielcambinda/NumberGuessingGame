@@ -119,7 +119,6 @@ namespace Guessing_Game
                         }
                         break;
                     case 2:
-                        
                         if (difficulty.Equals("Low"))
                         {
                             Console.Clear();
