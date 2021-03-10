@@ -8,10 +8,10 @@ namespace Guessing_Game
     class Jogada
     {
         
-        public int Tries { get; private set;}
-        public int Number { get; private set;}
-        public string Guesser { get; private set;}
-        public string Difficulty { get; set; }
+        public int Tries { get;}
+        public int Number { get;}
+        public string Guesser { get;}
+        public string Difficulty { get;}
 
         public Jogada(string guesser, int number , int tries, string difficulty)
         {
